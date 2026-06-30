@@ -180,4 +180,23 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = mailtoLink;
         });
     }
+
+    // 5. Cookie Banner Logic
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookiesBtn = document.getElementById('accept-cookies');
+    
+    if (cookieBanner && acceptCookiesBtn) {
+        // Check if already accepted
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1000); // Show after 1 second
+        }
+        
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.classList.remove('show');
+        });
+    }
+
 });

@@ -47,6 +47,15 @@
         .legal-content ul {
             padding-left: 20px;
         }
+        @media (max-width: 768px) {
+            .legal-content {
+                margin: 30px 20px;
+                padding: 25px;
+            }
+            .legal-content h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -125,6 +134,11 @@
                 <h2>4. Kontaktaufnahme über WhatsApp</h2>
                 <p>Wenn Sie über den WhatsApp-Button auf unserer Website mit uns in Kontakt treten, erfolgt die Kommunikation über den Dienst WhatsApp. Anbieter ist die WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland.</p>
                 <p>Wir weisen darauf hin, dass WhatsApp personenbezogene Daten (insb. Metadaten der Kommunikation) erhält und diese auch auf Servern in Staaten außerhalb der EU (z.B. USA) verarbeitet. Die Kommunikation über WhatsApp erfolgt auf Grundlage unseres berechtigten Interesses an einer schnellen und effektiven Kommunikation mit unseren Kunden (Art. 6 Abs. 1 lit. f DSGVO) bzw. zur Vertragsanbahnung (Art. 6 Abs. 1 lit. b DSGVO). Bitte übermitteln Sie uns auf diesem Wege keine hochsensiblen Daten.</p>
+
+                <h2>5. Cookies und lokale Speicherung (Local Storage)</h2>
+                <p>Unsere Website verwendet teilweise so genannte Cookies oder nutzt den lokalen Speicher (Local Storage) Ihres Browsers. Diese dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen.</p>
+                <p>Ein Beispiel hierfür ist die Speicherung Ihrer Entscheidung im Cookie-Banner (Consent). Wenn Sie auf "Akzeptieren" klicken, wird ein kleiner Datensatz im Local Storage Ihres Browsers abgelegt, damit das Banner bei zukünftigen Besuchen nicht erneut angezeigt wird. Diese Daten enthalten keine personenbezogenen Informationen und dienen ausschließlich der Steuerung der Website-Funktionen.</p>
+                <p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren.</p>
             </div>
         </div>
     </section>
@@ -140,6 +154,16 @@
         </div>
     </footer>
 
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Wir verwenden Cookies und lokale Speicherung, um Ihnen das beste Erlebnis auf unserer Website zu bieten. Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-primary btn-sm">Verstanden</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
         const hamburger = document.getElementById('hamburger');
@@ -147,6 +171,22 @@
         if (hamburger) {
             hamburger.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
+            });
+        }
+        
+        // Cookie Banner Logic
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptCookiesBtn = document.getElementById('accept-cookies');
+        
+        if (cookieBanner && acceptCookiesBtn) {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    cookieBanner.classList.add('show');
+                }, 1000);
+            }
+            acceptCookiesBtn.addEventListener('click', () => {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieBanner.classList.remove('show');
             });
         }
     </script>
