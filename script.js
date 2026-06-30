@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Set current year in footer
+    // 1. Aktuelles Jahr im Footer setzen
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 2. Navbar Scroll Effect
+    // 2. Navbar-Scroll-Effekt
     const navbar = document.getElementById('navbar');
     let lastScroll = 0;
     window.addEventListener('scroll', () => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     }, { passive: true });
 
-    // 2b. Scroll Reveal Animation (Intersection Observer)
+    // 2b. Scroll-Reveal-Animation (Sichtbarkeitsprüfung)
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // 3. Mobile Menu Toggle
+    // 3. Mobiles Menü umschalten
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     const navItems = document.querySelectorAll('.nav-links a');
@@ -37,32 +37,32 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking a link
+    // Mobiles Menü beim Klick auf einen Link schließen
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             navLinks.classList.remove('active');
         });
     });
 
-    // 4. Service Gallery Modal Logic
+    // 4. Logik für das Galerie-Modal der Leistungen
     const galleryModal = document.getElementById('service-gallery-modal');
     const galleryGrid = document.getElementById('sgm-grid');
     const galleryTitle = document.getElementById('sgm-title');
     const galleryClose = document.getElementById('sgm-close');
 
-    // Dynamically load images.js with cache busting
+    // images.js dynamisch laden (Cache-Busting)
     const cacheBuster = new Date().getTime();
     const imgScript = document.createElement('script');
     imgScript.src = `images.js?v=${cacheBuster}`;
     imgScript.onload = () => {
-        // images.js is loaded, service cards are now ready to open galleries
+        // images.js ist geladen, Leistungskarten können nun Galerien öffnen
     };
     imgScript.onerror = () => {
         console.error('Could not load images.js');
     };
     document.body.appendChild(imgScript);
 
-    // Map folder names to image arrays
+    // Ordnernamen den entsprechenden Bild-Arrays zuordnen
     function getImagesForCategory(folder) {
         if (folder === 'Baumfaellung' && typeof imagesBaumfaellung !== 'undefined') return imagesBaumfaellung;
         if (folder === 'Hecken' && typeof imagesHecken !== 'undefined') return imagesHecken;
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'auto';
     }
 
-    // Attach click events to service cards
+    // Klick-Events für die Leistungskarten hinzufügen
     document.querySelectorAll('.service-card[data-gallery]').forEach(card => {
         card.addEventListener('click', () => {
             const folder = card.dataset.gallery;
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     galleryClose.addEventListener('click', closeServiceGallery);
 
-    // Close modal on Escape
+    // Modal mit der Escape-Taste schließen
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (lightbox.classList.contains('active')) {
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 5. Lightbox Logic
+    // 5. Lightbox-Logik (Bildvergrößerung)
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeLightboxBtn = document.querySelector('.lightbox-close');
@@ -143,14 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeLightboxBtn.addEventListener('click', closeLightbox);
     
-    // Close lightbox when clicking outside the image
+    // Lightbox schließen, wenn außerhalb des Bildes geklickt wird
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {
             closeLightbox();
         }
     });
 
-    // 6. Email Form Logic
+    // 6. Logik für das E-Mail-Kontaktformular
     const toggleEmailBtn = document.getElementById('toggle-email-form');
     const emailFormContainer = document.getElementById('email-form-container');
     const contactForm = document.getElementById('contact-form');
@@ -181,16 +181,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Cookie Banner Logic
+    // 7. Cookie-Banner Logik
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptCookiesBtn = document.getElementById('accept-cookies');
     
     if (cookieBanner && acceptCookiesBtn) {
-        // Check if already accepted
+        // Prüfen, ob Cookies bereits akzeptiert wurden
         if (!localStorage.getItem('cookiesAccepted')) {
             setTimeout(() => {
                 cookieBanner.classList.add('show');
-            }, 1000); // Show after 1 second
+            }, 1000); // Nach 1 Sekunde einblenden
         }
         
         acceptCookiesBtn.addEventListener('click', () => {
