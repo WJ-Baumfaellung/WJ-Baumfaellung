@@ -1016,75 +1016,56 @@ img {
 /* ---------- Cookie Banner ---------- */
 .cookie-banner {
     position: fixed;
-    top: 0;
+    bottom: -150px;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background: rgba(24, 40, 30, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(24, 40, 30, 0.98);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: white;
+    padding: 20px 0;
     z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-    padding: 20px;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.3);
+    transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .cookie-banner.show {
-    opacity: 1;
-    pointer-events: all;
+    bottom: 0;
 }
 
 .cookie-content {
-    background: #ffffff;
-    padding: 45px 40px;
-    border-radius: var(--radius-md);
-    max-width: 550px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    gap: 25px;
-    transform: scale(0.95) translateY(20px);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(24, 40, 30, 0.1);
-}
-
-.cookie-banner.show .cookie-content {
-    transform: scale(1) translateY(0);
+    gap: 20px;
 }
 
 .cookie-content p {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     line-height: 1.6;
-    color: var(--text-main);
+    color: rgba(255,255,255,0.9);
 }
 
 .cookie-content a {
-    color: var(--color-2);
+    color: var(--color-3);
     text-decoration: underline;
     font-weight: 700;
     transition: var(--transition);
 }
 
 .cookie-content a:hover {
-    color: var(--color-3);
-}
-
-.cookie-buttons {
-    width: 100%;
+    color: white;
 }
 
 .cookie-buttons .btn-sm {
-    padding: 14px 30px;
-    font-size: 1.05rem;
-    width: 100%;
-    display: block;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    white-space: nowrap;
 }
 
 /* ---------- Responsive Design ---------- */
