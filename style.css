@@ -1150,6 +1150,23 @@ img {
         text-align: center;
         gap: 15px;
     }
+
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 10px 20px;
+    }
+
+    .cookie-buttons {
+        width: 100%;
+    }
+
+    .cookie-buttons .btn-sm {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
