@@ -1151,11 +1151,15 @@ img {
         gap: 15px;
     }
 
+    .cookie-banner {
+        padding-bottom: calc(20px + env(safe-area-inset-bottom, 15px));
+    }
+
     .cookie-content {
         flex-direction: column;
         text-align: center;
         gap: 15px;
-        padding: 10px 20px;
+        padding: 10px 20px 10px 20px;
     }
 
     .cookie-buttons {
