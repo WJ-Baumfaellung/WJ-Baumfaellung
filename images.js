@@ -82,6 +82,7 @@ const imagesBaumfaellung = [
   "ranodm (3).jpeg"
 ];
 const imagesHecken = [
+  "IMG-20260708-WA0006.jpg",
   "WhatsApp Image 2026-07-01 at 4.50.07 PM.jpeg",
   "WhatsApp Image 2026-07-01 at 4.50.08 PM (1).jpeg",
   "WhatsApp Image 2026-07-01 at 4.50.08 PM (2).jpeg",
